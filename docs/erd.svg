@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 720" font-family="Arial, sans-serif" font-size="13">
+  <defs>
+    <marker id="one" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <line x1="0" y1="2" x2="0" y2="12" stroke="#2c3e50" stroke-width="2"/>
+      <line x1="6" y1="2" x2="6" y2="12" stroke="#2c3e50" stroke-width="2"/>
+    </marker>
+    <marker id="many" markerWidth="14" markerHeight="14" refX="12" refY="7" orient="auto">
+      <line x1="0" y1="7" x2="12" y2="2" stroke="#2c3e50" stroke-width="2"/>
+      <line x1="0" y1="7" x2="12" y2="12" stroke="#2c3e50" stroke-width="2"/>
+      <line x1="0" y1="7" x2="12" y2="7" stroke="#2c3e50" stroke-width="2"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="550" y="32" text-anchor="middle" font-size="20" font-weight="bold" fill="#1a1a2e">
+    Diagrama Entidad-Relación · TecniServ
+  </text>
+  <text x="550" y="52" text-anchor="middle" font-size="12" fill="#666">
+    Sistema de Gestión de Órdenes de Servicio Técnico
+  </text>
+
+  <!-- ================= CLIENTES ================= -->
+  <g>
+    <rect x="60" y="90" width="260" height="200" rx="6" fill="#ffffff" stroke="#2c3e50" stroke-width="2"/>
+    <rect x="60" y="90" width="260" height="32" rx="6" fill="#2c3e50"/>
+    <text x="190" y="111" text-anchor="middle" fill="#fff" font-weight="bold" font-size="15">CLIENTES</text>
+    <line x1="60" y1="148" x2="320" y2="148" stroke="#ccc"/>
+
+    <text x="74" y="142" font-weight="bold" fill="#c0392b">PK</text>
+    <text x="110" y="142">id_cliente : NUMBER(10)</text>
+
+    <text x="74" y="166" font-weight="bold" fill="#16a085">UK</text>
+    <text x="110" y="166">documento : VARCHAR2(20)</text>
+
+    <text x="110" y="186">nombre : VARCHAR2(100)</text>
+    <text x="110" y="206">telefono : VARCHAR2(20)</text>
+    <text x="110" y="226">email : VARCHAR2(100)</text>
+    <text x="110" y="246">direccion : VARCHAR2(200)</text>
+    <text x="110" y="266">ciudad : VARCHAR2(60)</text>
+    <text x="110" y="282" font-style="italic" font-size="11" fill="#555">fecha_registro : DATE</text>
+  </g>
+
+  <!-- ================= TECNICOS ================= -->
+  <g>
+    <rect x="780" y="90" width="260" height="200" rx="6" fill="#ffffff" stroke="#2c3e50" stroke-width="2"/>
+    <rect x="780" y="90" width="260" height="32" rx="6" fill="#2c3e50"/>
+    <text x="910" y="111" text-anchor="middle" fill="#fff" font-weight="bold" font-size="15">TECNICOS</text>
+    <line x1="780" y1="148" x2="1040" y2="148" stroke="#ccc"/>
+
+    <text x="794" y="142" font-weight="bold" fill="#c0392b">PK</text>
+    <text x="830" y="142">id_tecnico : NUMBER(10)</text>
+
+    <text x="794" y="166" font-weight="bold" fill="#16a085">UK</text>
+    <text x="830" y="166">documento : VARCHAR2(20)</text>
+
+    <text x="830" y="186">nombre : VARCHAR2(100)</text>
+    <text x="830" y="206" font-style="italic" font-size="11" fill="#555">especialidad (CHECK)</text>
+    <text x="830" y="226">telefono : VARCHAR2(20)</text>
+    <text x="830" y="246">fecha_contratacion : DATE</text>
+    <text x="830" y="266" font-style="italic" font-size="11" fill="#555">activo (CHECK S/N)</text>
+  </g>
+
+  <!-- ================= EQUIPOS ================= -->
+  <g>
+    <rect x="60" y="370" width="260" height="200" rx="6" fill="#ffffff" stroke="#2c3e50" stroke-width="2"/>
+    <rect x="60" y="370" width="260" height="32" rx="6" fill="#2c3e50"/>
+    <text x="190" y="391" text-anchor="middle" fill="#fff" font-weight="bold" font-size="15">EQUIPOS</text>
+    <line x1="60" y1="428" x2="320" y2="428" stroke="#ccc"/>
+
+    <text x="74" y="422" font-weight="bold" fill="#c0392b">PK</text>
+    <text x="110" y="422">id_equipo : NUMBER(10)</text>
+
+    <text x="74" y="446" font-weight="bold" fill="#2980b9">FK</text>
+    <text x="110" y="446">id_cliente → CLIENTES</text>
+
+    <text x="110" y="466" font-style="italic" font-size="11" fill="#555">tipo (CHECK)</text>
+    <text x="110" y="486">marca : VARCHAR2(50)</text>
+    <text x="110" y="506">modelo : VARCHAR2(80)</text>
+
+    <text x="74" y="526" font-weight="bold" fill="#16a085">UK</text>
+    <text x="110" y="526">serial : VARCHAR2(60)</text>
+
+    <text x="110" y="546" font-style="italic" font-size="11" fill="#555">anio_compra (CHECK 1990-2100)</text>
+  </g>
+
+  <!-- ================= ORDENES_SERVICIO ================= -->
+  <g>
+    <rect x="780" y="370" width="260" height="280" rx="6" fill="#ffffff" stroke="#2c3e50" stroke-width="2"/>
+    <rect x="780" y="370" width="260" height="32" rx="6" fill="#2c3e50"/>
+    <text x="910" y="391" text-anchor="middle" fill="#fff" font-weight="bold" font-size="15">ORDENES_SERVICIO</text>
+    <line x1="780" y1="428" x2="1040" y2="428" stroke="#ccc"/>
+
+    <text x="794" y="422" font-weight="bold" fill="#c0392b">PK</text>
+    <text x="830" y="422">id_orden : NUMBER(10)</text>
+
+    <text x="794" y="446" font-weight="bold" fill="#2980b9">FK</text>
+    <text x="830" y="446">id_equipo → EQUIPOS</text>
+
+    <text x="794" y="466" font-weight="bold" fill="#2980b9">FK</text>
+    <text x="830" y="466">id_tecnico → TECNICOS</text>
+
+    <text x="830" y="486">fecha_ingreso : DATE</text>
+    <text x="830" y="506">fecha_entrega : DATE</text>
+    <text x="830" y="526">descripcion_problema : VARCHAR2(500)</text>
+    <text x="830" y="546">diagnostico : VARCHAR2(500)</text>
+    <text x="830" y="566" font-style="italic" font-size="11" fill="#555">estado (CHECK 6 valores)</text>
+    <text x="830" y="586" font-style="italic" font-size="11" fill="#555">prioridad (CHECK BAJA/MEDIA/ALTA)</text>
+    <text x="830" y="606" font-style="italic" font-size="11" fill="#555">costo_mano_obra (CHECK ≥0)</text>
+    <text x="830" y="626" font-style="italic" font-size="11" fill="#555">costo_repuestos (CHECK ≥0)</text>
+  </g>
+
+  <!-- Relaciones -->
+  <!-- CLIENTES (1) --- (N) EQUIPOS  -->
+  <line x1="190" y1="290" x2="190" y2="370" stroke="#2c3e50" stroke-width="2"
+        marker-start="url(#one)" marker-end="url(#many)"/>
+  <text x="200" y="335" fill="#2c3e50" font-size="11" font-style="italic">tiene (ON DELETE CASCADE)</text>
+
+  <!-- EQUIPOS (1) --- (N) ORDENES -->
+  <line x1="320" y1="470" x2="780" y2="470" stroke="#2c3e50" stroke-width="2"
+        marker-start="url(#one)" marker-end="url(#many)"/>
+  <text x="500" y="462" fill="#2c3e50" font-size="11" font-style="italic">recibe</text>
+
+  <!-- TECNICOS (1) --- (N) ORDENES -->
+  <line x1="910" y1="290" x2="910" y2="370" stroke="#2c3e50" stroke-width="2"
+        marker-start="url(#one)" marker-end="url(#many)"/>
+  <text x="920" y="335" fill="#2c3e50" font-size="11" font-style="italic">atiende</text>
+
+  <!-- Leyenda -->
+  <g transform="translate(60, 640)">
+    <rect width="660" height="60" fill="#f7f7f7" stroke="#ddd" rx="4"/>
+    <text x="14" y="22" font-weight="bold">Leyenda:</text>
+    <text x="14" y="42" fill="#c0387b" font-weight="bold">PK</text><text x="40" y="42">Primary Key</text>
+    <text x="120" y="42" fill="#2980b9" font-weight="bold">FK</text><text x="146" y="42">Foreign Key</text>
+    <text x="230" y="42" fill="#16a085" font-weight="bold">UK</text><text x="256" y="42">Unique Key</text>
+    <text x="340" y="42" font-style="italic" fill="#555">cursiva</text>
+    <text x="400" y="42">= columna con restricción CHECK</text>
+    <line x1="14" y1="52" x2="34" y2="52" stroke="#2c3e50" stroke-width="2" marker-start="url(#one)" marker-end="url(#many)"/>
+    <text x="44" y="56">Cardinalidad: uno-a-muchos</text>
+  </g>
+</svg>
